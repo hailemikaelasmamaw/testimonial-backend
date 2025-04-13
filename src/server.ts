@@ -1,7 +1,13 @@
-import express from "express";
+import { PrismaClient } from '@prisma/client'
+import express from 'express'
 
-const app = express () ;
+const prisma = new PrismaClient()
+const app = express()
 
-app.listen(3000, () => {
-    console.log('Server is running on 3000  port!!!!')
-})
+app.use(express.json())
+
+// ... your REST API routes will go here
+
+app.listen(3000, () =>
+    console.log('REST API server ready at: http://localhost:3000'),
+)
