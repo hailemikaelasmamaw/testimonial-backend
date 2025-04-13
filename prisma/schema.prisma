@@ -5,9 +5,10 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
+  
   provider = "prisma-client-js"
-  output   = "output   = "../node_modules/.prisma/client"
-"
+  output  = "../node_modules/.prisma/client"
+
 }
 
 datasource db {
@@ -16,7 +17,7 @@ datasource db {
 }
 
 model Testimonial {
-  id    String     @default(uuid()) @id
+  id    String      @id  @default(uuid())
   testimonial String  
   author    Author?   @relation(fields: [authorId], references: [id])
   authorId  String?
@@ -25,7 +26,7 @@ model Testimonial {
 }
 
 model Author {
-  id        String     @default(uuid()) @id
+  id        String    @id  @default(uuid()) 
   title     String
   testimonials Testimonial[]
   @@map("authors")
