@@ -1,17 +1,10 @@
-import { PrismaClient } from '@prisma/client'
+import { routes } from "./routes"
 import express from 'express'
 
-const prisma = new PrismaClient()
 const app = express()
 
-app.use(express.json())
+app.use(routes);
 
-// ... your REST API routes will go here
-app.get('/users', async (req, res) => {
-    const users = await prisma.findMany()
-    res.json(users)
+app.listen(3000, () => {
+    console.log ('Server is running on 3000 port !!!')
 })
-
-app.listen(3000, () =>
-    console.log('REST API server ready at: http://localhost:3000'),
-)
